@@ -1,0 +1,24 @@
+server:
+  port: 9999
+spring:
+  mvc:
+    static-path-pattern: /** #静态资源访问前缀为res
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/wlzp?serverTimezone=UTC&useUnicode=true&zeroDateTimeBehavior=convertToNull&autoReconnect=true&characterEncoding=utf-8
+    username: root
+    password: 123
+  jackson: #返回json的全局时间格式
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8 #并且是世界标准时间，和我们的时间差了八个小时，所以我们时区加 8
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml #扫描mybatis的xml文件,classpath表示资源文件夹
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl #控制台打印mysql语句日志
+    map-underscore-to-camel-case: true  #开启驼峰命名规范自动映射
+
+#文件存储
+files:
+  upload:
+    path: E:\桌面\Desktop\爬取网站\img\
